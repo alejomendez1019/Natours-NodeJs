@@ -1,0 +1,26 @@
+//Uso de variables
+//Este tipo de codigo es llamado Buffer code
+//h1= tour
+//h2=user.toUpperCase()
+//h1 The Park Camper
+
+//- const x = 9
+//h2= 2 * x
+
+//p Welcome to the best adventure tours in the world
+//con . se indica la clase
+header.header
+    //En la arquitectura de CSS BEM --tours es un modificador y __logo es un elemento
+    nav.nav.nav--tours
+        a.nav__el(href='/') All tours
+    .header__logo
+        img(src='/img/logo-white.png' alt='Natours logo')
+    nav.nav.nav--user
+        if user
+            a.nav__el.nav__el--logout Log out
+            a.nav__el(href='/me')
+                img.nav__user-img(src=`/img/users/${user.photo}` alt=`Photo of ${user.name}`)
+                span= user.name.split(' ')[0]
+        else
+            a.nav__el(href='/login') Log in
+            a.nav__el.nav__el--cta(href='/signup') Sign up
