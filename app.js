@@ -8,6 +8,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
+const cors = require('cors');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -29,6 +30,16 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 //1) GLOBAL Middlewares
+//Implement CORS
+//Its possible to use cors() for a specific route
+app.use(cors());
+//Access-Control-Allow-Origin *        Default, available for all origins
+//app.use(cors({ origin: 'https://www.natours.com' })); avaliable for a specific origin
+
+//Routes that can receive complex requests (PATCH, PUT, DELETE)
+app.options('*', cors());
+//app.options('/api/v1/tours/:id', cors());
+
 //Serving static files
 //ap.use(express.static(`${__dirname}/public`));
 app.use(express.static(path.join(__dirname, 'public')));
