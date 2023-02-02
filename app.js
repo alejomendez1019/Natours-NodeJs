@@ -90,7 +90,7 @@ const limiter = rateLimit({
 app.use('/api', limiter);
 
 //Its necessary receive the data in raw format, because stripe needs it in this format
-app.post('/webhook-checkout', express.raw({ type: '*/*' }), bookingController.webhookCheckout);
+app.post('/webhook-checkout', express.raw({type: 'application/json'}), bookingController.webhookCheckout);
 
 //Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' })); //Middleware allows the server to understand the data that comes in JSON format
